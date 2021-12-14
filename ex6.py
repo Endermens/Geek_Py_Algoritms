@@ -1,10 +1,22 @@
-print("ведите2 буквы чтоб узнать их порядковый номер и расстояние  между ними")
+import random
 
-a = (str(input("\nведите первую букву: ")))
-b = (str(input("ведите вторую букву: ")))
-
-ord_a = ((ord(a)) - 96)
-ord_b = ((ord(b)) - 96)
-print("\nпозицияпервой 1  буквы:", ord_a)
-print("позицияпервой 2 буквы:", ord_b)
-print("расстояние между символами: ", (ord_b - ord_a))
+print('отгадай число от 0 до 100')
+random_number = random.randrange(0, 101)
+print(random_number)
+print(type(random_number))
+my_number = 0
+my_try = 10
+while my_try != 0 and my_number != random_number:
+    my_number = int(input("\nэто число: "))
+    if my_number == random_number:
+        print(f"вы угадали это {my_number}")
+    elif my_number < random_number:
+        print("нет, берите выше")
+        my_try -= 1
+        print(f"у вас осталось  {my_try} попыток")
+    elif my_number > random_number:
+        print("нет, берите поменьше")
+        my_try -= 1
+        print(f"у вас осталось  {my_try} попыток")
+    else:
+        print('booba!')

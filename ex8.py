@@ -1,20 +1,12 @@
+my_number = input("введите любое натуральноео число:  ")
+num_list = []
+counter = {}
+for num in my_number:
+    num_list.append(int(num))
 
-# 1-й вариант:
+for elem in my_number:
+    counter[elem] = counter.get(elem, 0) + 1
 
-y = int(input("ведите год: "))
-if y % 4 != 0:
-    print("Обычный")
-elif y % 100 == 0:
-    if y % 400 == 0:
-        print("Високосный")
-    else:
-        print("Обычный")
-else:
-    print("Високосный")
+doubles = {element: count for element, count in counter.items() if count > 1}
 
-# # 2-й вариант:
-#
-# if y % 4 != 0 or (y % 100 == 0 and y % 400 != 0):
-#     print("Обычный")
-# else:
-#     print("Високосный")
+print(doubles)

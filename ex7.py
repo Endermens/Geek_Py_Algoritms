@@ -1,13 +1,16 @@
-print('Введите длины трех отрезков:')
+import random
 
-a = int(input("a = "))
-b = int(input("b = "))
-c = int(input("c = "))
-if a + b <= c or a + c <= b or b + c <= a:
-    print("Треугольник не существует")
-elif a != b and a != c and b != c:
-    print("Разносторонний")
-elif a == b == c:
-    print("Равносторонний")
-else:
-    print("Равнобедренный")
+num_list = [random.randint(1, 100) for _ in range(10)]
+min_el = num_list[1]
+pre_min = num_list[0]
+
+for num in num_list:
+    if num <= min_el:
+        pre_min = min_el
+        min_el = num
+    # если минимальный элемент находится вначале
+    elif num <= pre_min:
+        pre_min = num
+
+print(f'В массиве: \n{num_list} '
+      f'\nминимальные элементы: {min_el} и {pre_min}')

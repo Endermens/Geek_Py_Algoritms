@@ -1,23 +1,19 @@
-""" 3. По введенным пользователем координатам двух точек вывести уравнение прямой вида y=kx+b, проходящей через эти точки. """
+import random
 
-print('ведите координаты точек, принимаються только целые числа')
-x1 = int(input("x1: "))
-y1 = int(input("y1: "))
-x2 = int(input("x2: "))
-y2 = int(input("y2: "))
+num_list = [random.randint(0, 100) for _ in range(10)]
+print(*num_list)
+min_el = num_list[0]
+max_el = num_list[1]
 
-#Ax + By + C = 0 ; Ax + By + C = 0
-a = y1 - y2
-b = x2 - x1
-c = x1 * y2 - x2 * y1
-if a == 0 and b == 0:
-    print('Точки совпадают')
-elif a == 0:
-    print(f'Уравнение прямой:\n'
-          f'{b}y + {c} = 0')
-elif b == 0:
-    print(f'Уравнение прямой:\n'
-          f'{a}x + {c} = 0')
-else:
-    print(f'Уравнение прямой:\n'
-          f'{a}x + {b}y + {c} = 0')
+for i, item in enumerate(num_list):
+    if item <= min_el:
+        min_el = item
+        min_idx = i
+    if item >= max_el:
+        max_el = item
+        max_idx = i
+
+num_list[min_idx] = max_el
+num_list[max_idx] = min_el
+
+print('Переставим максимальный и минимальный элементы:\n', *num_list)

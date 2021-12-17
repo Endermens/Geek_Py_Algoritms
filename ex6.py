@@ -1,10 +1,29 @@
-print("ведите2 буквы чтоб узнать их порядковый номер и расстояние  между ними")
+import random
 
-a = (str(input("\nведите первую букву: ")))
-b = (str(input("ведите вторую букву: ")))
+num_list = [random.randint(0, 10) for _ in range(10)]
+print(*num_list)
+min_el = num_list[0]
+max_el = num_list[1]
 
-ord_a = ((ord(a)) - 96)
-ord_b = ((ord(b)) - 96)
-print("\nпозицияпервой 1  буквы:", ord_a)
-print("позицияпервой 2 буквы:", ord_b)
-print("расстояние между символами: ", (ord_b - ord_a))
+for i, item in enumerate(num_list):
+    if item <= min_el:
+        min_el = item
+        min_idx = i
+    if item >= max_el:
+        max_el = item
+        max_idx = i
+
+print(f'Минимальный элемент = {min_el}(индекс {min_idx})'
+      f'\nМаксимальный элементам = {max_el} (индекс {max_idx})')
+
+# Меняем индексы местами, если максимальный элемент встречаеся раньше
+if max_idx < min_idx:
+    max_idx, min_idx = min_idx, max_idx
+
+print(f'Элементы между минимальным и максимальным: {num_list[min_idx + 1:max_idx]}')
+
+summa = 0
+for i in range(min_idx + 1, max_idx):
+    summa += num_list[i]
+
+print(f'Сумма элементов, находящихся между минимальным и максимальным элементами = {summa}')

@@ -1,10 +1,12 @@
-print('Ведите две прописные буквы латинского алфавита:')
-char1 = input('char1 = ')
-char2 = input('char2 = ')
+import random
 
-pos_char1 = ord(char1) - 64
-pos_char2 = ord(char2) - 64
-distance = abs(pos_char1 - pos_char2) - 1
-print(f'Буква "{char1}" {pos_char1}-я в алфавите\n'
-      f'Буква "{char2}" {pos_char2}-я в алфавите\n'
-      f'Между буквами {distance} букв')
+num_list = [random.randint(-10, 10) for _ in range(10)]
+min_el = -float('inf')
+
+for i, item in enumerate(num_list):
+    if min_el < item < 0:
+        min_el = item
+        min_idx = i
+
+print(f'В массиве: \n{num_list} '
+      f'\nминимальный отрицательный элемент = {min_el} \nего индекс = {min_idx}')

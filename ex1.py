@@ -42,12 +42,12 @@
 from collections import namedtuple
 from statistics import mean
 
-New_Company = namedtuple('Company_Name', 'name profit_list avg')
+Company_Name = namedtuple('Company_Name', 'name profit_list avg')
 
 lst = []
 for i in range(int(input('Введите количество компани: '))):
     arg = input('Введите в строку имя и поквартальную прибыль через пробел:\n').split()
-    lst.append(New_Company(arg[0], arg[1:], mean(map(int, arg[1:3]))))
+    lst.append(Company_Name(arg[0], arg[1:], mean(map(int, arg[1:3]))))
 
 avg = mean([i.avg for i in lst])
 

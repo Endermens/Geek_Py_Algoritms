@@ -42,7 +42,7 @@
 from collections import namedtuple
 from statistics import mean
 
-New_Company = namedtuple('New_Company', 'name profit_list avg')
+New_Company = namedtuple('Company_Name', 'name profit_list avg')
 
 lst = []
 for i in range(int(input('Введите количество компани: '))):

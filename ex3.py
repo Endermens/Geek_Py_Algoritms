@@ -1,23 +1,27 @@
-""" 3. По введенным пользователем координатам двух точек вывести уравнение прямой вида y=kx+b, проходящей через эти точки. """
+import random
 
-print('ведите координаты точек, принимаються только целые числа')
-x1 = int(input("x1: "))
-y1 = int(input("y1: "))
-x2 = int(input("x2: "))
-y2 = int(input("y2: "))
 
-#Ax + By + C = 0 ; Ax + By + C = 0
-a = y1 - y2
-b = x2 - x1
-c = x1 * y2 - x2 * y1
-if a == 0 and b == 0:
-    print('Точки совпадают')
-elif a == 0:
-    print(f'Уравнение прямой:\n'
-          f'{b}y + {c} = 0')
-elif b == 0:
-    print(f'Уравнение прямой:\n'
-          f'{a}x + {c} = 0')
-else:
-    print(f'Уравнение прямой:\n'
-          f'{a}x + {b}y + {c} = 0')
+def median(array, k):
+    if len(array) == 1:
+        return array[0]
+
+    pivot = random.choice(array)
+
+    left_el = [el for el in array if el < pivot]
+    right_el = [el for el in array if el > pivot]
+    pivots = [el for el in array if el == pivot]
+
+    if k < len(left_el):
+        return median(left_el, k)
+    elif k < len(left_el) + len(pivots):
+        return pivots[0]
+    else:
+        return median(right_el, k - len(left_el) - len(pivots))
+
+
+M = 5
+lst = [random.randint(0, 20) for _ in range(2 * M + 1)]
+print(f'Исходный список:\n{lst}')
+lst.sort()
+print(f'Проверка!\nСписок после сортировки:\n{lst}')
+print(f'Медианой списка является:\n{lst[len(lst) // 2]}')

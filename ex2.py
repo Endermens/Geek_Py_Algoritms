@@ -1,3 +1,42 @@
-print(5 & 6) #and
-print( 5 | 6) #or
-print( 5 ^ 6) #-and
+import random
+
+def merge_sort(array):
+    def merge(a, b):
+        i = 0
+        j = 0
+        length_a = len(a)
+        length_b = len(b)
+        result = []
+        while i != length_a and j != length_b:
+            if a[i] < b[j]:
+                result.append(a[i])
+                i += 1
+            elif a[i] > b[j]:
+                result.append(b[j])
+                j += 1
+            else:
+                result.append(a[i])
+                result.append(b[j])
+                i += 1
+                j += 1
+        if i < length_a:
+            result.extend(a[i:])
+        if j < length_b:
+            result.extend(b[j:])
+        return result
+
+    if len(array) < 2:
+        return array
+    # if len(array) == 2:
+    #     if array[0] > array[1]:
+    #         array[0], array[1] = array[1], array[0]
+    #     return array
+
+    idx = len(array) // 2
+    return merge(merge_sort(array[:idx]), merge_sort(array[idx:]))
+
+
+lst = [random.uniform(0, 50) for _ in range(10)]
+print(f'до сортировки:\n{lst}')
+new_list = merge_sort(lst)
+print(f'после сортировки:\n{lst}')

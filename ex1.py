@@ -1,11 +1,29 @@
-print("Введите два 3-х значныхчисла ")
+## variant 1
+## Process returned 0 (0x0)        execution time : 5.304 s
 
-firts_number = int(input('\nпервое трехзнаачноечисло: '))
-second_number = int(input('второе трехзнаачноечисло: '))
+##  variant 2
 
-while firts_number < 100 or second_number < 100 or firts_number > 999 or second_number > 999:
-    print('попробуйте еще  ввести числа раз')
-    firts_number = int(input('\nпервое трехзнаачноечисло: '))
-    second_number = int(input('второе трехзнаачноечисло: '))
+import random
 
-print(firts_number * second_number)
+LST_LEN = 10
+random_lst = [random.randint(-100, 99) for i in range(LST_LEN)]
+
+
+def bubble_sort(numb_arr):
+    a = numb_arr
+
+    len_arr = len(a)
+    for i in range(len_arr - 1):
+        counter = 0
+        for j in range(len_arr - 1 - i):
+            if a[j] < a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
+                counter += 1
+        if counter == 0:
+            break
+    return a
+
+
+print(f'Исходный массив:\n{random_lst}\n')
+print(f'Сортированный массив:\n{bubble_sort(random_lst)}')
+## Process returned 0 (0x0)        execution time : 0.039 s

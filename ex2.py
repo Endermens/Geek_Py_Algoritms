@@ -27,10 +27,6 @@ def merge_sort(array):
 
     if len(array) < 2:
         return array
-    # if len(array) == 2:
-    #     if array[0] > array[1]:
-    #         array[0], array[1] = array[1], array[0]
-    #     return array
 
     idx = len(array) // 2
     return merge(merge_sort(array[:idx]), merge_sort(array[idx:]))
